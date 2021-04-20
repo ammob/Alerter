@@ -719,8 +719,8 @@ class Alerter private constructor() {
          */
         @JvmStatic
         @JvmOverloads
-        fun create(activity: Activity, viewGroup: ViewGroup? = null, layoutId: Int = R.layout.alerter_alert_default_layout): Alerter {
-            return create(activity = activity, dialog = null, viewGroup = viewGroup, layoutId = layoutId)
+        fun create(activity: Activity, layoutId: Int = R.layout.alerter_alert_default_layout): Alerter {
+            return create(activity = activity, dialog = null, viewGroup = null, layoutId = layoutId)
         }
 
         /**
@@ -731,8 +731,20 @@ class Alerter private constructor() {
          */
         @JvmStatic
         @JvmOverloads
-        fun create(dialog: Dialog, viewGroup: ViewGroup? = null, layoutId: Int = R.layout.alerter_alert_default_layout): Alerter {
-            return create(activity = null, dialog = dialog, viewGroup = viewGroup, layoutId = layoutId)
+        fun create(dialog: Dialog, layoutId: Int = R.layout.alerter_alert_default_layout): Alerter {
+            return create(activity = null, dialog = dialog, viewGroup = null, layoutId = layoutId)
+        }
+
+        /**
+         * Creates the Alert
+         *
+         * @param viewGroup The calling ViewGroup
+         * @return This Alerter
+         */
+        @JvmStatic
+        @JvmOverloads
+        fun create(viewGroup: ViewGroup, layoutId: Int = R.layout.alerter_alert_default_layout): Alerter {
+            return create(activity = null, dialog = null, viewGroup = viewGroup, layoutId = layoutId)
         }
 
         /**
@@ -751,13 +763,18 @@ class Alerter private constructor() {
             //Hide current Alert, if one is active
             clearCurrent(activity, dialog, viewGroup)
 
-            alerter.alert = dialog?.window?.let {
-                decorView = viewGroup?.let { WeakReference(it) } ?: run { WeakReference(it.decorView as ViewGroup) }
-                Alert(context = it.decorView.context, layoutId = layoutId)
-            } ?: run {
-                activity?.window?.let {
-                    decorView = viewGroup?.let { WeakReference(it) } ?: run { WeakReference(it.decorView as ViewGroup) }
-                    Alert(context = it.decorView.context, layoutId = layoutId)
+            when {
+                activity?.window != null -> {
+                    decorView = WeakReference(activity.window.decorView as ViewGroup)
+                    alerter.alert = Alert(context = activity.window.decorView.context, layoutId = layoutId)
+                }
+                dialog?.window != null -> {
+                    decorView = WeakReference(dialog.window!!.decorView as ViewGroup)
+                    alerter.alert = Alert(context = dialog.window!!.decorView.context, layoutId = layoutId)
+                }
+                viewGroup != null -> {
+                    decorView = WeakReference(viewGroup)
+                    alerter.alert = Alert(context = viewGroup.context, layoutId = layoutId)
                 }
             }
 

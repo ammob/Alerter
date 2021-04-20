@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -34,7 +35,7 @@ class KotlinDemoActivity : AppCompatActivity() {
     }
 
     private fun showAlertDefault() {
-        Alerter.create(this@KotlinDemoActivity, findViewById(R.id.framelayout))
+        Alerter.create(findViewById<FrameLayout>(R.id.framelayout))
                 .setTitle(R.string.title_activity_example)
                 .setText("Alert text...")
                 .show()
