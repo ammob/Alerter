@@ -34,7 +34,7 @@ class KotlinDemoActivity : AppCompatActivity() {
     }
 
     private fun showAlertDefault() {
-        Alerter.create(this@KotlinDemoActivity)
+        Alerter.create(this@KotlinDemoActivity, findViewById(R.id.framelayout))
                 .setTitle(R.string.title_activity_example)
                 .setText("Alert text...")
                 .show()
@@ -175,7 +175,7 @@ class KotlinDemoActivity : AppCompatActivity() {
     }
 
     private fun showAlertWithCustomLayout() {
-        Alerter.create(this@KotlinDemoActivity, R.layout.custom_layout)
+        Alerter.create(this@KotlinDemoActivity, layoutId = R.layout.custom_layout)
                 .setBackgroundColorRes(R.color.colorAccent)
                 .also { alerter ->
                     val tvCustomView = alerter.getLayoutContainer()?.tvCustomLayout
