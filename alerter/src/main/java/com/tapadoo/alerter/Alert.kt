@@ -241,15 +241,15 @@ class Alert @JvmOverloads constructor(context: Context,
             }
 
             if (enableProgress) {
-                ivIcon?.visibility = View.INVISIBLE
+                ivLeftIcon?.visibility = View.INVISIBLE
                 ivRightIcon?.visibility = View.INVISIBLE
                 pbProgress?.visibility = View.VISIBLE
             } else {
                 if (showIcon) {
-                    ivIcon?.visibility = View.VISIBLE
+                    ivLeftIcon?.visibility = View.VISIBLE
                     // Only pulse if we're not showing the progress
                     if (enableIconPulse) {
-                        ivIcon?.startAnimation(AnimationUtils.loadAnimation(context, R.anim.alerter_pulse))
+                        ivLeftIcon?.startAnimation(AnimationUtils.loadAnimation(context, R.anim.alerter_pulse))
                     }
                 } else {
                     flIconContainer?.visibility = View.GONE
@@ -469,7 +469,7 @@ class Alert @JvmOverloads constructor(context: Context,
      * @param iconId Drawable resource id of the icon to use in the Alert
      */
     fun setIcon(@DrawableRes iconId: Int) {
-        ivIcon?.setImageDrawable(AppCompatResources.getDrawable(context, iconId))
+        ivLeftIcon?.setImageDrawable(AppCompatResources.getDrawable(context, iconId))
     }
 
     /**
@@ -478,7 +478,7 @@ class Alert @JvmOverloads constructor(context: Context,
      * @param color Color int
      */
     fun setIconColorFilter(@ColorInt color: Int) {
-        ivIcon?.setColorFilter(color)
+        ivLeftIcon?.setColorFilter(color)
     }
 
     /**
@@ -487,7 +487,7 @@ class Alert @JvmOverloads constructor(context: Context,
      * @param colorFilter ColorFilter
      */
     fun setIconColorFilter(colorFilter: ColorFilter) {
-        ivIcon?.colorFilter = colorFilter
+        ivLeftIcon?.colorFilter = colorFilter
     }
 
     /**
@@ -497,7 +497,7 @@ class Alert @JvmOverloads constructor(context: Context,
      * @param mode  PorterDuff.Mode
      */
     fun setIconColorFilter(@ColorInt color: Int, mode: PorterDuff.Mode) {
-        ivIcon?.setColorFilter(color, mode)
+        ivLeftIcon?.setColorFilter(color, mode)
     }
 
     /**
@@ -506,7 +506,7 @@ class Alert @JvmOverloads constructor(context: Context,
      * @param bitmap Bitmap image of the icon to use in the Alert.
      */
     fun setIcon(bitmap: Bitmap) {
-        ivIcon?.setImageBitmap(bitmap)
+        ivLeftIcon?.setImageBitmap(bitmap)
     }
 
     /**
@@ -515,7 +515,7 @@ class Alert @JvmOverloads constructor(context: Context,
      * @param drawable Drawable image of the icon to use in the Alert.
      */
     fun setIcon(drawable: Drawable) {
-        ivIcon?.setImageDrawable(drawable)
+        ivLeftIcon?.setImageDrawable(drawable)
     }
 
     /**
@@ -534,7 +534,7 @@ class Alert @JvmOverloads constructor(context: Context,
      * @param size Icon size in pixel.
      */
     fun setIconPixelSize(@Px size: Int) {
-        ivIcon.layoutParams = ivIcon.layoutParams.apply {
+        ivLeftIcon.layoutParams = ivLeftIcon.layoutParams.apply {
             width = size
             height = size
             minimumWidth = size
