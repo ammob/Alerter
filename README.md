@@ -1,7 +1,18 @@
 [![](https://jitpack.io/v/ammob/Alerter.svg)](https://jitpack.io/#ammob/Alerter)
 
-
-
+```groovy
+allprojects {
+ repositories {
+    jcenter()
+    maven { url "https://jitpack.io" }
+ }
+}
+```
+```groovy
+dependencies {
+    implementation 'com.github.ammob:Alerter:Tag'
+}
+```
 
 # Alerter - An Android Alerter Library, now in Kotlin!
 
