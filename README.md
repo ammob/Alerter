@@ -1,3 +1,8 @@
+[![](https://jitpack.io/v/ammob/Alerter.svg)](https://jitpack.io/#ammob/Alerter)
+
+
+
+
 # Alerter - An Android Alerter Library, now in Kotlin!
 
 This library aims to overcome the limitations of Toasts and Snackbars, while reducing the
