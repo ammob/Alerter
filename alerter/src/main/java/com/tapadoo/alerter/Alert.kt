@@ -40,7 +40,8 @@ import kotlinx.android.synthetic.main.alerter_alert_view.view.*
 class Alert @JvmOverloads constructor(context: Context,
                                       @LayoutRes layoutId: Int,
                                       attrs: AttributeSet? = null,
-                                      defStyle: Int = 0)
+                                      defStyle: Int = 0,
+                                      val isInViewGroup: Boolean = false)
     : FrameLayout(context, attrs, defStyle), View.OnClickListener, Animation.AnimationListener, SwipeDismissTouchListener.DismissCallbacks {
 
     private var onShowListener: OnShowAlertListener? = null
@@ -155,6 +156,10 @@ class Alert @JvmOverloads constructor(context: Context,
                         paddingLeft, getDimenPixelSize(R.dimen.alerter_padding_default),
                         paddingRight, getDimenPixelSize(R.dimen.alerter_alert_padding)
                 )
+            } else {
+                if (isInViewGroup) {
+                    setPadding(this.paddingLeft, getDimenPixelSize(R.dimen.alerter_alert_view_group_padding_top), this.paddingRight, this.paddingBottom)
+                }
             }
         }
 

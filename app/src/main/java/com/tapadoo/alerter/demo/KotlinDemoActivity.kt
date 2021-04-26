@@ -35,7 +35,7 @@ class KotlinDemoActivity : AppCompatActivity() {
     }
 
     private fun showAlertDefault() {
-        Alerter.create(findViewById<FrameLayout>(R.id.framelayout))
+        Alerter.create(framelayout)
                 .setTitle(R.string.title_activity_example)
                 .setText("Alert text...")
                 .show()

@@ -22,5 +22,6 @@
     <dimen name="alerter_text_small">14sp</dimen>
     <dimen name="alerter_text_medium">18sp</dimen>
     <dimen name="alerter_alert_view_padding_top">70dp</dimen>
+    <dimen name="alerter_alert_view_group_padding_top">50dp</dimen>
 
 </resources>

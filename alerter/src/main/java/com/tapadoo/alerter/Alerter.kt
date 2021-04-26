@@ -774,7 +774,7 @@ class Alerter private constructor() {
                 }
                 viewGroup != null -> {
                     decorView = WeakReference(viewGroup)
-                    alerter.alert = Alert(context = viewGroup.context, layoutId = layoutId)
+                    alerter.alert = Alert(context = viewGroup.context, layoutId = layoutId, isInViewGroup = true)
                 }
             }
 
